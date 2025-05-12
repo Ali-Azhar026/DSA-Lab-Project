@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header-title">Car Rental System</div>
+    <div class="container">
+        <h1>Available Cars</h1>
+        <table>
+            <tr>
+                <th>ID</th><th>Brand</th><th>Mileage</th><th>Price</th>
+            </tr>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car[0] }}</td>
+                <td>{{ car[1] }}</td>
+                <td>{{ car[2] }}</td>
+                <td>{{ car[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Add New Car</h2>
+        <form method="POST" action="/add_car">
+            <input type="number" name="car_id" placeholder="Car ID" required>
+            <input type="text" name="brand" placeholder="Brand" required>
+            <input type="number" name="mileage" placeholder="Mileage" required>
+            <input type="number" name="price" placeholder="Price/Day" required>
+            <button type="submit">Add Car</button>
+        </form>
+
+        <h2>Request Car Rental</h2>
+        <form method="POST" action="/rent_car">
+            <input type="number" name="customer_id" placeholder="Customer ID" required>
+            <input type="text" name="name" placeholder="Customer Name" required>
+            <input type="number" name="car_id" placeholder="Car ID to Rent" required>
+            <button type="submit">Request Rental</button>
+        </form>
+
+        <h2>Return a Car</h2>
+        <form method="POST" action="/return_car">
+            <input type="number" name="car_id" placeholder="Car ID to Return" required>
+            <button type="submit">Return Car</button>
+        </form>
+
+        <a href="/records" class="btn-link">View Rental Records</a>
+    </div>
+</body>
+</html>

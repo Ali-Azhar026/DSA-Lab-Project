@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Rental Records</h1>
+        <table>
+            <tr>
+                <th>Customer ID</th><th>Name</th><th>Car ID</th><th>Rent Date</th>
+            </tr>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.customer_id }}</td>
+                <td>{{ record.customer_name }}</td>
+                <td>{{ record.car_id }}</td>
+                <td>{{ record.rent_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/" class="btn-link">Back to Home</a>
+    </div>
+</body>
+</html>
